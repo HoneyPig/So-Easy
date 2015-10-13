@@ -54,8 +54,7 @@ set WEBHOST XXX.XXX.XXX.XXX
 set WEBUSER root
 set WEBPASS XXXXXXXXXXXXXX
 
-set WC /var/www/html/fwc/
-
+set WC /var/www/html/xxx/
 set SVNBIN /usr/bin/svn
 set timeout 30
 
@@ -63,12 +62,9 @@ set E_NO_SSH 1 ;# can't find a usable SSH on our system
 set E_NO_CONNECT 2 ;# failure to connect to remote server (timed out)
 set E_WRONG_PASS 3 ;# password provided does not work
 set E_UNKNOWN 25 ;# unexpected failure
-
-
 set SSHBIN /usr/bin/ssh
 
 spawn $SSHBIN $WEBUSER@$WEBHOST "$SVNBIN update -r HEAD --force $WC"
-
 expect {
     "continue connecting (yes/no)? " { send "yes\r"; exp_continue; }
     -nocase "password:" { send "$WEBPASS\r"; }
